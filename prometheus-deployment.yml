@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-deployment
+  labels:
+    app: basic-monitoring-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: prometheus-pod
+      app: basic-monitoring-app
+  template:
+    metadata:
+      name: prometheus-pod
+      labels:
+        name: prometheus-pod
+        app: basic-monitoring-app
+    spec:
+      containers:
+        - name: prometheus
+          image: prom/prometheus
+          ports:
+            - containerPort: 9090

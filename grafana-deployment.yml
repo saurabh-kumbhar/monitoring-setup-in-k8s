@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana-deployment
+  labels:
+    app: basic-monitoring-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: grafana-pod
+      app: basic-monitoring-app
+  template:
+    metadata:
+      name: grafana-pod
+      labels:
+        name: grafana-pod
+        app: basic-monitoring-app
+    spec:
+      containers:
+        - name: grafana
+          image: grafana/grafana
+          ports:
+            - containerPort: 3000
+          env:
+            - name: GF_AUTH_DISABLE_LOGIN_FORM
+              value: "true"
+            - name: GF_AUTH_BASIC_ENABLED
+              value: "false"

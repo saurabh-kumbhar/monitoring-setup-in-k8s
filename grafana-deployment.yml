@@ -23,13 +23,23 @@ spec:
           ports:
             - containerPort: 3000
           env:
-            - name: GF_AUTH_DISABLE_LOGIN_FORM
-              value: "true"
-            - name: GF_AUTH_BASIC_ENABLED
-              value: "false"
-            - name: GF_AUTH_ANONYMOUS_ENABLED
-              value: "true"
-            - name: GF_AUTH_ANONYMOUS_ORG_NAME
-              value: "Main Org."
-            - name: GF_AUTH_ANONYMOUS_ORG_ROLE
-              value: "Admin"
+#            - name: GF_AUTH_DISABLE_LOGIN_FORM
+#              value: "true"
+#            - name: GF_AUTH_BASIC_ENABLED
+#              value: "false"
+#            - name: GF_AUTH_ANONYMOUS_ENABLED
+#              value: "true"
+#            - name: GF_AUTH_ANONYMOUS_ORG_NAME
+#              value: "Main Org."
+#            - name: GF_AUTH_ANONYMOUS_ORG_ROLE
+#              value: "Admin"
+            - name: GF_DATABASE_TYPE
+              value: "mysql"
+            - name: GF_DATABASE_HOST
+              value: "mysql-service:3306"
+            - name: GF_DATABASE_NAME
+              value: "grafanadb"
+            - name: GF_DATABASE_USER
+              value: "root"
+            - name: GF_DATABASE_PASSWORD
+              value: "password"

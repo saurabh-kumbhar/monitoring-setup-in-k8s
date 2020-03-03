@@ -20,6 +20,9 @@ spec:
       containers:
         - name: prometheus
           image: prom/prometheus
+          securityContext:
+            privileged: true
+            runAsNonRoot: false
           ports:
             - containerPort: 9090
           command:

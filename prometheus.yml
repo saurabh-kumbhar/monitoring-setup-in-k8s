@@ -1,0 +1,15 @@
+global:
+  scrape_interval: 15s
+  external_labels:
+    replica: prometheus-replica-label
+scrape_configs:
+  - job_name: K8SMonitoring-prometheus
+    metrics_path: /metrics
+    static_configs:
+      - targets:
+          - 'localhost:9090'
+  - job_name: K8SMonitoring-grafana
+    metrics_path: /metrics
+    static_configs:
+      - targets:
+          - 'grafana-internal-service:3000'

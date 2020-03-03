@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: tsdb-pv-volume
+  labels:
+    name: prometheus-tsdb-pv
+    app: basic-monitoring-app
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/home/ubuntu/prometheus/tsdb"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: tsdb-pv-claim
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi

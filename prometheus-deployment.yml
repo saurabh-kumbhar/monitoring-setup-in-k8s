@@ -22,3 +22,19 @@ spec:
           image: prom/prometheus
           ports:
             - containerPort: 9090
+          command:
+            - "--config.file=/etc/prometheus/prometheus.yml"
+            - "--storage.tsdb.path=/prometheus"
+            - "--web.enable-lifecycle"
+          volumeMounts:
+            - name: tsdb-persistent-storage
+              mountPath: /prometheus
+            - name: config-storage
+              mountPath: /etc/prometheus
+      volumes:
+        - name: tsdb-persistent-storage
+          persistentVolumeClaim:
+            claimName: tsdb-pv-claim
+        - name: config-storage
+          persistentVolumeClaim:
+            claimName: prometheus-config-pv-claim

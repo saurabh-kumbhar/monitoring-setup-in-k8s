@@ -1,0 +1,17 @@
+apiVersion: v1
+
+kind: Service
+
+metadata:
+  name: grafana-internal-service
+  labels:
+    name: grafana-internal-service
+    app: basic-monitoring-app
+
+spec:
+  ports:
+    - port: 3000
+      targetPort: 3000
+  selector:
+    name: grafana-pod
+    app: basic-monitoring-app
